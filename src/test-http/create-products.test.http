@@ -1,0 +1,29 @@
+@host = http://localhost:3000
+POST {{host}}/products HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample",
+    "price": 12.30
+}
+###
+GET {{host}}/products HTTP/1.1
+content-type: application/json
+
+###
+
+GET {{host}}/products/2 HTTP/1.1
+content-type: application/json
+###
+
+PATCH  {{host}}/products/2 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample edited",
+    "price": 12.30
+}
+
+###
+
+DELETE {{host}}/products/2 HTTP/1.1
