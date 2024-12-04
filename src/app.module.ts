@@ -3,10 +3,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
 
+//? decidi usar o typeorm para o banco de dados pq acho que combina mais com o 'felling' do NestJs
+//? mais do que Prisma ou Mongoose
 @Module({
   imports: [
-    //! eu sei que deveria usar .env, mas estou com pressa pois comecei a fazer os desafios as 17 horas, e tinha ate somente meia noite pra resolver
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -18,6 +20,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       synchronize: true,
     }),
     ProductsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

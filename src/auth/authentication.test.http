@@ -1,0 +1,26 @@
+@host = http://localhost:3000
+@token = ""
+
+POST {{host}}/auth/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "a@b.com",
+    "password": "password"
+}
+
+###
+POST {{host}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "a@b.com",
+    "password": "password"
+}
+
+###? por algum motivo o token nao vem para a variavel, to com preguiça de preguiça de pesquisar a doc pra saber como faz pra funcionar
+@token = request.response.body.access_token
+###
+GET {{host}}/auth/profile HTTP/1.1
+Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiYUBiLmNvbSIsImlhdCI6MTczMzM1MDIwMCwiZXhwIjoxNzMzNDM2NjAwfQ.bMvIhEj90yjGgtMm2pTS8QNlOV1CMmb4yi8qkiKPRk0
